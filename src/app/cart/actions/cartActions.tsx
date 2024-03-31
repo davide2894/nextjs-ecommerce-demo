@@ -1,26 +1,22 @@
 "use server";
 
-import { API } from "@/lib/constants";
-import { useAppSelector } from "@/customHooks/useAppSelector";
-import { Cart, ProductToAdd } from "@/lib/types";
+import { Cart, IProduct, ProductToAdd } from "@/lib/types";
+import {
+  addProductToCartInDB,
+  createNewCartInDB,
+  getCartFromDB,
+} from "@/lib/db/cart";
 
-export async function getCart(param: any): Promise<Cart> {
-  console.log("calling cart route");
-  console.log({ param });
-  return fetch(
-    `${API.PROTOCOL}://${API.DOMAIN}/${API.PATH.CARTS}/${API.VERB.ADD}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: 1,
-        products: [
-          { id: 1, quantity: 1 },
-          { id: 2, quantity: 2 },
-        ],
-      }),
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => res);
+export async function getCart(): Promise<Cart> {
+  let cart = await getCartFromDB();
+  if (!cart) {
+    cart = await createNewCartInDB();
+  }
+  return cart;
+}
+
+export async function addProductToCartAction(product: IProduct) {
+  let cart = await getCart();
+  const cartAfterAddingProduct = await addProductToCartInDB(product, cart.id);
+  return cartAfterAddingProduct;
 }

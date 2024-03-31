@@ -1,24 +1,31 @@
-import { getProduct } from "@/lib/data/productsData";
 import React from "react";
 import Container from "@mui/material/Container";
 import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
+import { notFound } from "next/navigation";
+import { getProduct } from "../actions/productDetailAction";
 
 interface ProductDetailPageProps {
   params: {
-    id: number;
+    id: string;
   };
 }
 
 async function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = await getProduct(params.id.toString());
+  const product = await getProduct(params.id);
+
+  console.log({ pdpItem: product });
+
+  if (!product) {
+    return notFound();
+  }
 
   return (
     <Container>
       {product.images.map((image: string) => (
         <Image
           src={image}
-          key={product.id}
+          key={image + product.id}
           alt={product.title}
           width={200}
           height={200}
@@ -37,7 +44,7 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
           number): {product.rating}
         </div>
       </div>
-      <AddToCartButton productId={params.id} />
+      <AddToCartButton product={product} />
     </Container>
   );
 }

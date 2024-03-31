@@ -1,9 +1,7 @@
 import React from "react";
-import { ProductToAdd } from "@/lib/types";
-import { getCart } from "@/lib/data/cartData";
 import { redirect } from "next/navigation";
 import CartProduct from "./CartProduct";
-import ProductCard from "@/components/ProductCard";
+import { getCart } from "./actions/cartActions";
 import { Button } from "@mui/material";
 import Link from "next/link";
 
@@ -11,9 +9,8 @@ interface CartPageProps {
   searchParams: string;
 }
 
-async function CartPage({ searchParams }: any) {
-  console.log({ searchParams });
-  const cart = await getCart(searchParams);
+async function CartPage() {
+  const cart = await getCart();
   console.log({ cart });
   if (!cart) {
     redirect("/");

@@ -1,6 +1,6 @@
 import ProductCard from "@/components/ProductCard";
-import { getProducts } from "@/lib/data/productsData";
 import React from "react";
+import { getProducts } from "../product-detail/actions/productDetailAction";
 
 async function ProductListPage() {
   const products = await getProducts();

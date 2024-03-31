@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  brand              String
+  category           String
+  description        String
+  discountPercentage Float
+  id_                Int      @map("id")
+  images             String[]
+  price              Int
+  /// Multiple data types found: Float: 96.7%, Int: 3.3% out of 30 sampled entries
+  rating             Float
+  stock              Int
+  thumbnail          String
+  title              String
+
+  @@map("products")
+}
+
+model Cart {
+  id    String     @id @default(auto()) @map("_id") @db.ObjectId
+  items CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  productId          String  @db.ObjectId
+  title              String
+  price              Int
+  quantity           Int
+  discountPercentage Float
+  thumbnail          String
+  Cart               Cart?   @relation(fields: [cartId], references: [id])
+  cartId             String? @db.ObjectId
+
+  @@map("cartitems")
+}

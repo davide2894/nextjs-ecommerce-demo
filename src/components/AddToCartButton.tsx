@@ -1,20 +1,19 @@
 "use client";
 
+import { addProductToCartAction } from "@/app/cart/actions/cartActions";
+import { IProduct } from "@/lib/types";
 import { Button } from "@mui/material";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { addItemToShoppingBag } from "@/lib/shoppingBag/shoppingBagSlice";
+import React, { useState } from "react";
 
 interface AddToCartButtonProps {
-  productId: number;
+  product: IProduct;
 }
 
-function AddToCartButton({ productId }: AddToCartButtonProps) {
-  const dispatch = useDispatch();
+function AddToCartButton({ product }: AddToCartButtonProps) {
+  const [loading, setLoading] = useState(false);
 
-  function handleClick() {
-    console.log(`calling dispatch(addItemToShoppingBag(${productId}))`);
-    dispatch(addItemToShoppingBag(productId));
+  async function handleClick() {
+    await addProductToCartAction(product);
   }
   return <Button onClick={handleClick}>Add to bag</Button>;
 }

@@ -3,10 +3,10 @@ import Image from "next/image";
 import Price from "./Price";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
-import { Product } from "@/lib/types";
+import { IProduct } from "@/lib/types";
 
 interface ProductCardProps {
-  product: Product;
+  product: IProduct;
 }
 
 function ProductCard({ product }: ProductCardProps) {
@@ -25,7 +25,7 @@ function ProductCard({ product }: ProductCardProps) {
           <p>{product.description}</p>
         </div>
       </Link>
-      <AddToCartButton productId={product.id} />
+      <AddToCartButton product={product} />
     </div>
   );
 }
