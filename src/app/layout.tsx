@@ -5,6 +5,9 @@ import Container from "@mui/material/Container";
 import StoreProvider from "@/components/storeProvider/StoreProvider";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import { Box } from "@mui/material";
+import { Suspense } from "react";
+import Looading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Header />
         <Container>
-          <Header />
-          {children}
-          <Footer />
+          <Box>{children}</Box>
         </Container>
+        <Footer />
       </body>
     </html>
   );
