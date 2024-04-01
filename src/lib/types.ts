@@ -25,6 +25,7 @@ export type Cart = {
   id: string;
   items: ICartItem[];
   subTotal: number;
+  totalQuantity: number;
 };
 
 export type ProductToAdd = {

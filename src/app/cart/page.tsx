@@ -1,6 +1,6 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import CartItem from "./CartItem";
+import CartItem from "../../components/cartItem/CartItem";
 import { getCart } from "@/db/queries/cart";
 import { Button } from "@mui/material";
 import Link from "next/link";
@@ -14,8 +14,9 @@ async function CartPage() {
   console.log("---------------------------");
   console.log("cart page");
   const cart = await getCart();
+  console.log({ cartPageInfo: cart });
 
-  if (!cart) {
+  if (!cart.items.length) {
     redirect("/");
   }
 

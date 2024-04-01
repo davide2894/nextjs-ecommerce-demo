@@ -1,9 +1,15 @@
+import { revalidatePath } from "next/cache";
 import prisma from "../setup";
 
-export default async function increaseCartItemQty(
+export default async function decrementCartItemQuantityByOne(
   cartItemId: string,
   cartId: string
 ) {
+  console.log({
+    cartItemId,
+    cartId,
+  });
+
   await prisma.cart.update({
     where: {
       id: cartId,
@@ -16,11 +22,13 @@ export default async function increaseCartItemQty(
           },
           data: {
             quantity: {
-              increment: 1,
+              decrement: 1,
             },
           },
         },
       },
     },
   });
+
+  revalidatePath("/cart");
 }
