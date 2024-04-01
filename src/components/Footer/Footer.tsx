@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <Typography textAlign="center" variant="h5">
+    <Typography textAlign="center" variant="body2">
       Made by Davide Iaiunese
     </Typography>
   );

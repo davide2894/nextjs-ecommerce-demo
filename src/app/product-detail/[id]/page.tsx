@@ -4,6 +4,16 @@ import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
 import { notFound } from "next/navigation";
 import { getProduct } from "../actions/productDetailAction";
+import {
+  Box,
+  Button,
+  ImageList,
+  ImageListItem,
+  Link,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import ProductImages from "@/components/productImages/ProductImages";
 
 interface ProductDetailPageProps {
   params: {
@@ -14,39 +24,53 @@ interface ProductDetailPageProps {
 async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const product = await getProduct(params.id);
 
-  console.log({ pdpItem: product });
-
   if (!product) {
     return notFound();
   }
 
   return (
-    <Container>
-      {product.images.map((image: string) => (
-        <Image
-          src={image}
-          key={image + product.id}
-          alt={product.title}
-          width={200}
-          height={200}
-        />
-      ))}
-
-      <div className="product-info">
-        <p>{product.title}</p>
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        <p>{product.discountPercentage}</p>
-        <p>{product.brand}</p>
-        <p>{product.category}</p>
-        <div className="rating">
-          Rating (to replace with stars that get filled based on rounded rating
-          number): {product.rating}
-        </div>
-      </div>
-      <AddToCartButton product={product} />
+    <Container maxWidth="sm" sx={containerStyle}>
+      <Box sx={{ height: "100vh" }}>
+        <Link href="/product-list" sx={backToLink}>
+          <Typography variant="caption">Back to product list page</Typography>
+        </Link>
+        <Box>
+          <ProductImages images={product.images} />
+        </Box>
+        <Box sx={productInfoStyle}>
+          <Box component="div">
+            <Typography variant="body1">{product.title}</Typography>
+            <Typography variant="body2">€ {product.price}</Typography>
+          </Box>
+          <Box component="div">
+            <AddToCartButton product={product} />
+          </Box>
+        </Box>
+      </Box>
     </Container>
   );
 }
+
+const containerStyle = {
+  display: "flex",
+  justifyContent: "column",
+};
+
+const categoryNameStyle = {
+  marginTop: "20px",
+  marginBottom: "10px",
+};
+
+const productInfoStyle = {
+  display: "flex",
+  flexDirection: "column",
+  marginTop: "10px",
+};
+
+const backToLink = {
+  display: "block",
+  color: "#000",
+  margin: "20px 0 10px",
+};
 
 export default ProductDetailPage;

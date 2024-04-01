@@ -2,16 +2,14 @@
 
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
 import { IProduct } from "@/lib/types";
-import { IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useState, useTransition } from "react";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 interface AddToCartButtonProps {
   product: IProduct;
 }
 
 function AddToCartButton({ product }: AddToCartButtonProps) {
-  const [loading, setLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   function handleClick() {
@@ -22,17 +20,24 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
 
   console.log({ isPending });
 
-  const color = isPending ? "lightgray" : "#000";
+  const color = isPending ? "lightgray" : "white";
 
   return (
-    <IconButton
-      sx={{ color }}
+    <Button
+      variant="contained"
+      sx={{ ...buttonStyle, color }}
+      // sx={{ background: "black" }}
       disabled={isPending}
       onClick={handleClick}
       aria-label={`Add ${product.title} to shopping bag`}>
-      <ShoppingBagIcon />
-    </IconButton>
+      Add to bag
+    </Button>
   );
 }
+
+const buttonStyle = {
+  background: "black",
+  marginTop: "20px",
+};
 
 export default AddToCartButton;
