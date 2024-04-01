@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import ShoppingBag from "../ShoppingBag";
+import ShoppingBag from "../shoppingBag/ShoppingBag";
+import { getCart } from "@/db/queries/cart";
 
-function Header() {
+async function Header() {
+  const cart = await getCart();
+
   return (
     <div>
-      <nav className="">
-        <div className="">
+      <nav className="header">
+        <div className="headerLogo">
           <Link href="/" className="linkToHome">
             <Image
               src={`/images/vercel.svg`}
@@ -16,17 +19,8 @@ function Header() {
             />
           </Link>
         </div>
-        <div className="">
-          {/* <form action={searchProducts}>
-            <div className="form-control">
-              <input
-                name="searchQuery"
-                placeholder="Search"
-                className="input-bordered input w-full min-w-[100px]"
-              />
-            </div>
-          </form> */}
-          <ShoppingBag numberOfItems={0} />
+        <div className="headerRight">
+          <ShoppingBag numberOfItems={cart.totalQuantity} />
         </div>
       </nav>
     </div>
