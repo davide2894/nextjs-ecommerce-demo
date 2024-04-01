@@ -5,6 +5,12 @@ interface IBaseProduct {
   thumbnail: string;
   discountPercentage: number;
 }
+export interface ICartItem extends IBaseProduct {
+  cartId: string | null;
+  productId: string;
+  discountPercentage: number;
+  quantity: number;
+}
 
 export interface IProduct extends IBaseProduct {
   description: string;
@@ -15,41 +21,13 @@ export interface IProduct extends IBaseProduct {
   images: string[];
 }
 
-export interface ICartItem extends IBaseProduct {
-  cartId: string;
-  productId: string;
-  discountPercentage: number;
-  quantity: number;
-}
-
-// export type Cart = {
-//   id: string;
-//   products: ICartProduct[];
-//   quantity: number;
-//   total: number;
-//   discountedTotal: number;
-//   userId: number;
-//   totalProducts: number;
-//   totalQuantity: number;
-// };
-
 export type Cart = {
   id: string;
   items: ICartItem[];
+  subTotal: number;
 };
 
 export type ProductToAdd = {
   id: number;
   quantity: number;
-};
-
-type CartItem = {
-  id: string;
-  productId: string;
-  title: string;
-  price: number;
-  quantity: number;
-  discountPercentage: number;
-  thumbnail: string;
-  cartId: string;
 };

@@ -1,5 +1,5 @@
-import { IProduct } from "../types";
-import prisma from "./prismaUtils";
+import { IProduct } from "../../lib/types";
+import prisma from "../../lib/services/prisma/setup";
 
 export async function getProductsFromDB(): Promise<IProduct[]> {
   return await prisma.product.findMany();

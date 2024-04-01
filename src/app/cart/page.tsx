@@ -1,17 +1,20 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import CartProduct from "./CartProduct";
-import { getCart } from "./actions/cartActions";
+import CartItem from "./CartItem";
+import { getCart } from "@/db/queries/cart";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import getCartItems from "@/lib/services/prisma/operations/getCartItems";
 
 interface CartPageProps {
   searchParams: string;
 }
 
 async function CartPage() {
+  console.log("---------------------------");
+  console.log("cart page");
   const cart = await getCart();
-  console.log({ cart });
+
   if (!cart) {
     redirect("/");
   }
@@ -19,14 +22,14 @@ async function CartPage() {
   return (
     <div>
       <div className="cartProducts">
-        {cart.products &&
-          cart.products.map((product) => (
-            <CartProduct product={product} key={product.id} />
+        {cart.items &&
+          cart.items.map((cartItem) => (
+            <CartItem item={cartItem} key={cartItem.id} />
           ))}
         <hr />
         <div className="subtotal">
           <p>Subtotal</p>
-          <p>{cart.total}</p>
+          <p>{cart.subTotal}</p>
           <p className="disclaimer">
             Shipping and taxes calculated at checkout
           </p>

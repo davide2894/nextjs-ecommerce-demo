@@ -5,5 +5,5 @@ export function storeCartIdLocally(cartId: string) {
 }
 
 export function getLocalCartId() {
-  return cookies().get("cartId")?.value;
+  return cookies().get("cartId")?.value as string;
 }
