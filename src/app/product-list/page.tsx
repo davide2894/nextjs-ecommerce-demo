@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ProductCard";
-import React from "react";
+import React, { Suspense } from "react";
 import { getProducts } from "../product-detail/actions/productDetailAction";
+import Looading from "../loading";
 
 async function ProductListPage() {
   const products = await getProducts();
@@ -10,11 +11,13 @@ async function ProductListPage() {
   }
 
   return (
-    <div>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
-    </div>
+    <Suspense fallback={<Looading />}>
+      <div>
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </div>
+    </Suspense>
   );
 }
 

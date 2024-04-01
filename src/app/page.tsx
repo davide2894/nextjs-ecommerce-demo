@@ -1,16 +1,27 @@
-import { Button } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import styles from "./page.module.css";
+import { TrendingUpRounded } from "@mui/icons-material";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div>
-        <p>E-COMMERCE</p>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}>
+        <Typography variant="h1" textAlign="center">
+          Welcome to the Next Ecommerce
+        </Typography>
 
-        <Button variant="contained" href="/product-list">
-          Go to the product list page
+        <Button
+          variant="outlined"
+          sx={{ width: "200px", margin: "50px auto" }}
+          href="/product-list">
+          Start shopping
         </Button>
-      </div>
+      </Box>
     </main>
   );
 }
