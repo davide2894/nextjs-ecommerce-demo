@@ -1,5 +1,5 @@
 import React from "react";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Link from "next/link";
 
 interface IShoppingBagProps {
@@ -10,7 +10,7 @@ function ShoppingBag({ numberOfItems }: IShoppingBagProps) {
   return (
     <div>
       <Link href="/cart">
-        <LocalMallIcon />
+        <ShoppingBagOutlinedIcon />
         <span>{numberOfItems}</span>
       </Link>
     </div>
