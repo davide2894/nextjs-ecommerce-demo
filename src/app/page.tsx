@@ -1,6 +1,5 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import styles from "./page.module.css";
-import { TrendingUpRounded } from "@mui/icons-material";
 
 export default function Home() {
   return (
