@@ -10,7 +10,7 @@ export default function Home() {
           flexDirection: "column",
           justifyContent: "center",
         }}>
-        <Typography variant="h1" textAlign="center">
+        <Typography variant="h3" textAlign="center">
           Welcome to the Next Ecommerce
         </Typography>
 
