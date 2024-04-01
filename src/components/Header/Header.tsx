@@ -33,8 +33,8 @@ async function Header() {
               alt="Next.js e-commerce logo"
             />
           </Link>
-          <Typography variant="h6" component="div" sx={{}}>
-            Next ecommerce
+          <Typography variant="h6" component="div">
+            Next E-commerce
           </Typography>
           {/* <Searchbar/> */}
           <ShoppingBag numberOfItems={cart.totalQuantity} />
