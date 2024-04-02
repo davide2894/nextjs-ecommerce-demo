@@ -2,7 +2,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 import CartItem from "../../components/cartItem/CartItem";
 import { getCart } from "@/db/queries/cart";
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import Link from "next/link";
 import getCartItems from "@/lib/services/prisma/operations/getCartItems";
 
@@ -21,7 +21,7 @@ async function CartPage() {
   }
 
   return (
-    <div>
+    <Container maxWidth="sm">
       <div className="cartProducts">
         {cart.items &&
           cart.items.map((cartItem) => (
@@ -43,7 +43,7 @@ async function CartPage() {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 
