@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Price from "./Price";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 import { IProduct } from "@/lib/types";

@@ -1,18 +1,9 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
 import { notFound } from "next/navigation";
 import { getProduct } from "../actions/productDetailAction";
-import {
-  Box,
-  Button,
-  ImageList,
-  ImageListItem,
-  Link,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ProductImages from "@/components/productImages/ProductImages";
 import BackToButton from "@/components/backToButton/BackToButton";
 

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Container from "@mui/material/Container";
-import StoreProvider from "@/components/storeProvider/StoreProvider";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { Box } from "@mui/material";

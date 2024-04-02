@@ -2,7 +2,7 @@
 
 import React, { useTransition } from "react";
 import Image from "next/image";
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { ICartItem } from "@/lib/types";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,9 +11,6 @@ import {
   incrementCartItemByOneAction,
   removeCartItemAction,
 } from "../../app/cart/actions/cartActions";
-import decrementCartItemQuantityByOne from "@/lib/services/prisma/operations/decrementCartItemQuantityByOne";
-import RemoveCartItemButton from "./RemoveCartItemButton";
-import { isPending } from "@reduxjs/toolkit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 interface CartItemtProps {

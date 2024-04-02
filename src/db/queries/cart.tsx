@@ -1,9 +1,4 @@
-import { API } from "@/lib/constants";
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { Cart, ICartItem, IProduct, ProductToAdd } from "@/lib/types";
-import prisma from "../../lib/services/prisma/setup";
-import { cookies } from "next/headers";
-import CartPage from "@/app/cart/page";
+import { Cart, ICartItem, IProduct } from "@/lib/types";
 import { getLocalCartId, storeCartIdLocally } from "../../lib/localCart";
 import getCartItems from "@/lib/services/prisma/operations/getCartItems";
 import createCart from "@/lib/services/prisma/operations/createCart";

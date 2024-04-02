@@ -1,6 +1,5 @@
 import React from "react";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import Link from "next/link";
 import { Box, IconButton, Typography } from "@mui/material";
 
 interface IShoppingBagProps {

@@ -3,7 +3,7 @@
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
 import { IProduct } from "@/lib/types";
 import { Button } from "@mui/material";
-import React, { useState, useTransition } from "react";
+import React, { useTransition } from "react";
 
 interface AddToCartButtonProps {
   product: IProduct;
@@ -26,7 +26,6 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     <Button
       variant="contained"
       sx={{ ...buttonStyle, color }}
-      // sx={{ background: "black" }}
       disabled={isPending}
       onClick={handleClick}
       aria-label={`Add ${product.title} to shopping bag`}>
