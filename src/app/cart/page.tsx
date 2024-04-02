@@ -2,17 +2,11 @@ import React from "react";
 import { redirect } from "next/navigation";
 import CartItem from "../../components/cartItem/CartItem";
 import { getCart } from "@/db/queries/cart";
-import { Button, Container } from "@mui/material";
-import Link from "next/link";
-import getCartItems from "@/lib/services/prisma/operations/getCartItems";
-
-interface CartPageProps {
-  searchParams: string;
-}
+import { Box, Button, Container, Typography } from "@mui/material";
+import BackToButton from "@/components/backToButton/BackToButton";
+import Stack from "@mui/material/Stack";
 
 async function CartPage() {
-  console.log("---------------------------");
-  console.log("cart page");
   const cart = await getCart();
   console.log({ cartPageInfo: cart });
 
@@ -22,29 +16,36 @@ async function CartPage() {
 
   return (
     <Container maxWidth="sm">
-      <div className="cartProducts">
+      <Box>
         {cart.items &&
           cart.items.map((cartItem) => (
             <CartItem item={cartItem} key={cartItem.id} />
           ))}
         <hr />
-        <div className="subtotal">
-          <p>Subtotal</p>
-          <p>{cart.subTotal}</p>
-          <p className="disclaimer">
-            Shipping and taxes calculated at checkout
-          </p>
-        </div>
-        <div className="cartActions">
-          <Button>Checkout</Button>
-          <div>
-            <span>or</span>
-            <Link href="/">Continue Shopping</Link>-
-          </div>
-        </div>
-      </div>
+        <Stack spacing={2} sx={subTotalAreaStack}>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography fontWeight="bold">Subtotal</Typography>
+            <Typography fontWeight="bold">{cart.subTotal}</Typography>
+          </Stack>
+          <Typography>Shipping and taxes calculated at checkout</Typography>
+          <Stack>
+            <Button variant="contained" sx={{ background: "black" }}>
+              Checkout
+            </Button>
+            <Stack direction="row" spacing={2} justifyContent="center">
+              <Typography variant="caption">or</Typography>
+              <BackToButton target="/product-list" text="Continue Shopping" />
+            </Stack>
+          </Stack>
+        </Stack>
+      </Box>
     </Container>
   );
 }
+
+const subTotalAreaStack = {
+  marginTop: "20px",
+  marginBottom: "40px",
+};
 
 export default CartPage;

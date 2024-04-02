@@ -14,6 +14,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import ProductImages from "@/components/productImages/ProductImages";
+import BackToButton from "@/components/backToButton/BackToButton";
 
 interface ProductDetailPageProps {
   params: {
@@ -31,9 +32,7 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
   return (
     <Container maxWidth="sm" sx={containerStyle}>
       <Box sx={{ height: "100vh" }}>
-        <Link href="/product-list" sx={backToLink}>
-          <Typography variant="caption">Back to product list page</Typography>
-        </Link>
+        <BackToButton target="/product-list" text="Back to products" />
         <Box>
           <ProductImages images={product.images} />
         </Box>
@@ -65,12 +64,6 @@ const productInfoStyle = {
   display: "flex",
   flexDirection: "column",
   marginTop: "10px",
-};
-
-const backToLink = {
-  display: "block",
-  color: "#000",
-  margin: "20px 0 10px",
 };
 
 export default ProductDetailPage;
