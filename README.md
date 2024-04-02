@@ -11,6 +11,23 @@ Brutally simple e-commerce demo with homepage, product list, product details and
 - [React](https://react.dev/)
 - [Material UI](https://mui.com/)
 
+## Notes
+
+- This repo uses `Git flow`
+- This repo is composed of the following branches
+  - `feature/ecommerce-setup`
+  - `feature/common`
+  - `feature/product-list`
+  - `feature/product-detail`
+  - `feature/cart`
+  - `develop`
+  - `main`
+
+Ech branch served its purpose when developing the pages and features avaialable (product detail, product list, cart).
+The `feature` branches were merged into `develop` and `main` once their respective development was done.
+I decided to keep them (hence not to delete them) for demonstration purposes.
+Use `main` to start this project locally.
+
 ## Requirements
 
 Make sure to have installed the [Latest Stable Version of Node](https://nodejs.org/en) on your machine. This is to avoid incompatibilty and/or conflict issues among the needed dependencies to run the app
