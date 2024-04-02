@@ -2,7 +2,7 @@
 
 import React, { useTransition } from "react";
 import Image from "next/image";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { ICartItem } from "@/lib/types";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -23,14 +23,19 @@ interface CartItemtProps {
 function CartItem({ item }: CartItemtProps) {
   const [isPending, startTransition] = useTransition();
 
-  async function onDecrementButtonClick() {
+  function onDecrementButtonClick() {
     if (item.cartId) {
-      await decrementCartItemByOneAction(item.id, item.cartId);
+      startTransition(async () => {
+        await decrementCartItemByOneAction(item.id, item.cartId!);
+      });
     }
   }
-  async function onIncrementButtonClick() {
+
+  function onIncrementButtonClick() {
     if (item.cartId) {
-      await incrementCartItemByOneAction(item.id, item.cartId);
+      startTransition(async () => {
+        await incrementCartItemByOneAction(item.id, item.cartId!);
+      });
     }
   }
 
@@ -47,7 +52,11 @@ function CartItem({ item }: CartItemtProps) {
   });
 
   return (
-    <Box sx={boxStyle}>
+    <Stack
+      direction="row"
+      margin="10px auto"
+      borderTop="1px solid lightgray"
+      paddingTop="10px">
       <Box>
         <Image
           style={cartItemImage}
@@ -57,14 +66,14 @@ function CartItem({ item }: CartItemtProps) {
           alt={item.title}
         />
       </Box>
-      <Box sx={cartItemInfo}>
-        <Box sx={cartItemNamePrice}>
+      <Stack justifyContent="space-between" width="100%">
+        <Stack direction="row" justifyContent="space-between" marginTop="20px">
           <Typography>{item.title}</Typography>
-          <Typography fontWeight="bold">
+          <Typography fontWeight="bold" marginRight="10px">
             € {item.price * item.quantity}
           </Typography>
-        </Box>
-        <Box sx={cartItemActions}>
+        </Stack>
+        <Stack direction="row" justifyContent="space-between">
           <Box>
             <IconButton
               disabled={isPending}
@@ -73,63 +82,30 @@ function CartItem({ item }: CartItemtProps) {
               <DeleteIcon />
             </IconButton>
           </Box>
-          <Box sx={cartItemQuantity}>
+          <Stack direction="row" alignItems="center">
             <IconButton
-              disabled={item.quantity === 1}
+              disabled={item.quantity === 1 || isPending}
               aria-label="decrement quantity by 1"
               onClick={onDecrementButtonClick}>
               <RemoveIcon />
             </IconButton>
             <Typography>{item.quantity}</Typography>
             <IconButton
-              sx={increaseQuantityButton}
+              disabled={isPending}
               aria-label="increment quantity by 1"
               onClick={onIncrementButtonClick}>
               <AddIcon />
             </IconButton>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }
 
-const boxStyle = {
-  display: "flex",
-  margin: "10px auto",
-  borderTop: "1px solid lightgray",
-  paddingTop: "10px",
-};
 const cartItemImage = {
   borderRadius: "5px",
   marginRight: "20px",
-};
-
-const cartItemInfo = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  width: "100%",
-};
-
-const cartItemNamePrice = {
-  marginTop: "20px",
-  display: "flex",
-  justifyContent: "space-between",
-};
-
-const cartItemActions = {
-  display: "flex",
-  justifyContent: "space-between",
-};
-
-const cartItemQuantity = {
-  display: "flex",
-  alignItems: "center",
-};
-
-const increaseQuantityButton = {
-  paddingRight: 0,
 };
 
 export default CartItem;
