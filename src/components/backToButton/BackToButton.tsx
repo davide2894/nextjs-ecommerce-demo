@@ -10,7 +10,7 @@ interface IBackToButton {
 function BackToButton({ target, text }: IBackToButton) {
   return (
     <Link href={target} style={backToLink}>
-      <Typography variant="caption">Back to product list page</Typography>
+      <Typography variant="caption">{text}</Typography>
     </Link>
   );
 }
