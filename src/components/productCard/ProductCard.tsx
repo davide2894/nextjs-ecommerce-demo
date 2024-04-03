@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "@/components/addToCartButton/AddToCartButton";
 import { IProduct } from "@/lib/types";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import Price from "@/components/Price";
+import Price from "@/components/price/Price";
 
 interface ProductCardProps {
   product: IProduct;
