@@ -3,6 +3,7 @@ import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 import { IProduct } from "@/lib/types";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import Price from "@/components/Price";
 
 interface ProductCardProps {
   product: IProduct;
@@ -31,7 +32,7 @@ function ProductCard({ product }: ProductCardProps) {
             justifyContent: "space-between",
             alignItems: "center",
           }}>
-          <Typography variant="body1">€ {product.price}</Typography>
+          <Price price={product.price} />
           <AddToCartButton product={product} />
         </Box>
       </CardContent>

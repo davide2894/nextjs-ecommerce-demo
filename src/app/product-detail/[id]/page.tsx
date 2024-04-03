@@ -6,6 +6,7 @@ import { getProduct } from "../actions/productDetailAction";
 import { Box, Typography } from "@mui/material";
 import ProductImages from "@/components/productImages/ProductImages";
 import BackToButton from "@/components/backToButton/BackToButton";
+import Price from "@/components/Price";
 
 interface ProductDetailPageProps {
   params: {
@@ -30,7 +31,7 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
         <Box sx={productInfoStyle}>
           <Box component="div">
             <Typography variant="body1">{product.title}</Typography>
-            <Typography variant="body2">€ {product.price}</Typography>
+            <Price price={product.price} />
           </Box>
           <Box component="div">
             <AddToCartButton product={product} />
@@ -44,11 +45,6 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
 const containerStyle = {
   display: "flex",
   justifyContent: "column",
-};
-
-const categoryNameStyle = {
-  marginTop: "20px",
-  marginBottom: "10px",
 };
 
 const productInfoStyle = {
