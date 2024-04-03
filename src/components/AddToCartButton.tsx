@@ -1,21 +1,43 @@
 "use client";
 
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
+import log from "@/lib/log";
 import { IProduct } from "@/lib/types";
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useTransition } from "react";
 
 interface AddToCartButtonProps {
   product: IProduct;
 }
 
 function AddToCartButton({ product }: AddToCartButtonProps) {
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
-  async function handleClick() {
-    await addProductToCartAction(product);
+  function handleClick() {
+    startTransition(async () => {
+      await addProductToCartAction(product);
+    });
   }
-  return <Button onClick={handleClick}>Add to bag</Button>;
+
+  log({ isPending });
+
+  const color = isPending ? "lightgray" : "white";
+
+  return (
+    <Button
+      variant="contained"
+      sx={{ ...buttonStyle, color }}
+      disabled={isPending}
+      onClick={handleClick}
+      aria-label={`Add ${product.title} to shopping bag`}>
+      Add to bag
+    </Button>
+  );
 }
+
+const buttonStyle = {
+  background: "black",
+  marginTop: "20px",
+};
 
 export default AddToCartButton;

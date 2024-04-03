@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 interface PriceProps {
@@ -5,7 +6,7 @@ interface PriceProps {
 }
 
 function Price({ price }: PriceProps) {
-  return <div>{price}</div>;
+  return <Typography variant="body2">€ {price}</Typography>;
 }
 
 export default Price;

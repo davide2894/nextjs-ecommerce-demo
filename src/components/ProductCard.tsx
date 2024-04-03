@@ -1,9 +1,9 @@
 import React from "react";
-import Image from "next/image";
-import Price from "./Price";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 import { IProduct } from "@/lib/types";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import Price from "@/components/Price";
 
 interface ProductCardProps {
   product: IProduct;
@@ -11,22 +11,32 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <div>
+    <Card sx={{ maxidth: 300 }}>
       <Link href={"/product-detail/" + product.id}>
-        <Image
+        <CardMedia
+          component="img"
+          sx={{ height: 250, objectFit: "contain" }}
           src={product.images[0]}
-          alt={product.title}
-          width={500}
-          height={500}
+          title={product.title}
         />
-        <div>
-          <h1>{product.title}</h1>
-          <Price price={product.price} />
-          <p>{product.description}</p>
-        </div>
       </Link>
-      <AddToCartButton product={product} />
-    </div>
+      <CardContent>
+        <Box sx={{ height: 40 }}>
+          <Typography gutterBottom variant="caption" component="div">
+            {product.title.toLocaleUpperCase()}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}>
+          <Price price={product.price} />
+          <AddToCartButton product={product} />
+        </Box>
+      </CardContent>
+    </Card>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
-import Link from "next/link";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { Box, IconButton, Typography } from "@mui/material";
 
 interface IShoppingBagProps {
   numberOfItems: number;
@@ -8,12 +8,14 @@ interface IShoppingBagProps {
 
 function ShoppingBag({ numberOfItems }: IShoppingBagProps) {
   return (
-    <div>
-      <Link href="/cart">
-        <LocalMallIcon />
-        <span>{numberOfItems}</span>
-      </Link>
-    </div>
+    <Box>
+      <IconButton href="/cart">
+        <ShoppingBagOutlinedIcon />
+        <Typography color="black" variant="caption">
+          {numberOfItems}
+        </Typography>
+      </IconButton>
+    </Box>
   );
 }
 

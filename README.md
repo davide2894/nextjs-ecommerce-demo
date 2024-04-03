@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Ecommerce Demo
 
-## Getting Started
+Brutally simple e-commerce demo with homepage, product list, product details and cart pages.
 
-First, run the development server:
+## Technologies being used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [MongoDb](https://www.sqlite.org/index.html)
+- [Prisma.io](https://www.prisma.io/) ORM
+- [Next.js 14](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [Material UI](https://mui.com/)
+
+## Notes
+
+- This repo uses `Git flow`
+- This repo is composed of the following branches
+  - `feature/ecommerce-setup`
+  - `feature/common`
+  - `feature/product-list`
+  - `feature/product-detail`
+  - `feature/cart`
+  - `develop`
+  - `main`
+
+Ech branch served its purpose when developing the pages and features avaialable (product detail, product list, cart).
+The `feature` branches were merged into `develop` and `main` once their respective development was done.
+I decided to keep them (hence not to delete them) for demonstration purposes.
+Use `main` to start this project locally.
+
+## Requirements
+
+Make sure to have installed the [Latest Stable Version of Node](https://nodejs.org/en) on your machine. This is to avoid incompatibilty and/or conflict issues among the needed dependencies to run the app
+
+## Install dependenceis
+
+Run the command `npm i` at the root folder level
+
+## Configure db connection string
+
+Create an `.env` file in the project root and configure a connection string to mongo db by following the [official format shown in Mongo Db documentation](https://www.mongodb.com/docs/manual/reference/connection-string/), reported below.
+
+The documentation might be more updated than this README at moment of reading so please, make sure to consult it.
+
+```
+mongodb+srv://[username:password@]host[/[defaultauthdb][?options]]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Start Prisma client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run `npx prisma generate`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Ready to go
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Run `npm run dev` to startup local Next.js server (usually setup on port 3000)
