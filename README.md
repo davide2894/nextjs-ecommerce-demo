@@ -53,3 +53,8 @@ Run `npx prisma generate`
 ## Ready to go
 
 Run `npm run dev` to startup local Next.js server (usually setup on port 3000)
+
+## Next features to add
+
+- Search
+- Show Material ui skeleton while images are loading
