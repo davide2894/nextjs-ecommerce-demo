@@ -1,5 +1,6 @@
 "use client";
 
+import log from "@/lib/log";
 import { useMediaQuery, ImageList, ImageListItem } from "@mui/material";
 import React from "react";
 
@@ -12,7 +13,7 @@ function ProductImages({ images }: IProductImagesProps) {
   const matchesDesktopMediaQuery = useMediaQuery("(min-width:1024px)");
   let cols;
 
-  console.log({ images });
+  log({ images });
 
   if (matchesTabletMediaQuery) {
     cols = 3;

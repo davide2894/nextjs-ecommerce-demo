@@ -13,6 +13,7 @@ import {
 } from "../../app/cart/actions/cartActions";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
+import log from "@/lib/log";
 
 interface CartItemtProps {
   item: ICartItem;
@@ -43,7 +44,7 @@ function CartItem({ item }: CartItemtProps) {
     });
   }
 
-  console.log({
+  log({
     productId: item.productId,
     itemQty: item.quantity,
     itemQtyGT0: item.quantity > 0,

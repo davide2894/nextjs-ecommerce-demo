@@ -1,6 +1,7 @@
 "use client";
 
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
+import log from "@/lib/log";
 import { IProduct } from "@/lib/types";
 import { Button } from "@mui/material";
 import React, { useTransition } from "react";
@@ -18,7 +19,7 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     });
   }
 
-  console.log({ isPending });
+  log({ isPending });
 
   const color = isPending ? "lightgray" : "white";
 

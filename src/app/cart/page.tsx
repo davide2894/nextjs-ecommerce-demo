@@ -5,10 +5,11 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import BackToButton from "@/components/backToButton/BackToButton";
 import Stack from "@mui/material/Stack";
 import { getCart } from "@/db/queries/cart";
+import log from "@/lib/log";
 
 async function CartPage() {
   const cart = await getCart();
-  console.log({ cartPageInfo: cart });
+  log({ cartPageInfo: cart });
 
   if (!cart) {
     redirect("/");
