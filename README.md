@@ -26,7 +26,7 @@ Brutally simple e-commerce demo with homepage, product list, product details and
 Ech branch served its purpose when developing the pages and features avaialable (product detail, product list, cart).
 The `feature` branches were merged into `develop` and `main` once their respective development was done.
 I decided to keep them (hence not to delete them) for demonstration purposes.
-Use `main` to start this project locally.
+Use `develop` to start this project locally.
 
 ## Requirements
 
