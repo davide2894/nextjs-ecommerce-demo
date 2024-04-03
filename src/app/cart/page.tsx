@@ -1,16 +1,16 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import CartItem from "../../components/cartItem/CartItem";
-import { getCart } from "@/db/queries/cart";
 import { Box, Button, Container, Typography } from "@mui/material";
 import BackToButton from "@/components/backToButton/BackToButton";
 import Stack from "@mui/material/Stack";
+import { getCart } from "./actions/cartActions";
 
 async function CartPage() {
   const cart = await getCart();
   console.log({ cartPageInfo: cart });
 
-  if (!cart.items.length) {
+  if (!cart) {
     redirect("/");
   }
 

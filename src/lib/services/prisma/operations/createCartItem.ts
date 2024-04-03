@@ -1,5 +1,6 @@
 import { IProduct } from "@/lib/types";
 import prisma from "../setup";
+import { revalidatePath } from "next/cache";
 
 export default async function createCartItem(
   cartId: string,
@@ -22,4 +23,6 @@ export default async function createCartItem(
       },
     },
   });
+
+  revalidatePath("/cart");
 }

@@ -8,7 +8,7 @@ import getSingleCartItem from "@/lib/services/prisma/operations/getSingleCartIte
 import decrementCartItemQuantityByOne from "@/lib/services/prisma/operations/decrementCartItemQuantityByOne";
 import { removeCartItem } from "@/lib/services/prisma/operations/removeCartItem";
 
-function calculateSubTotal(cartItems: ICartItem[]) {
+export function calculateSubTotal(cartItems: ICartItem[]) {
   return cartItems.reduce(
     (accumulatedSubTotal, currentCartItem) =>
       accumulatedSubTotal + currentCartItem.price * currentCartItem.quantity,
@@ -16,7 +16,7 @@ function calculateSubTotal(cartItems: ICartItem[]) {
   );
 }
 
-function calculateTotalQuantity(cartItems: ICartItem[]) {
+export function calculateTotalQuantity(cartItems: ICartItem[]) {
   return cartItems.reduce(
     (accumulatedTotalQuantity, currentCartItem) =>
       accumulatedTotalQuantity + currentCartItem.quantity,
@@ -24,7 +24,7 @@ function calculateTotalQuantity(cartItems: ICartItem[]) {
   );
 }
 
-async function getExistingCartFromDB(cartId: string): Promise<Cart> {
+export async function getExistingCartFromDB(cartId: string): Promise<Cart> {
   const items = await getCartItems(cartId);
   const subTotal = calculateSubTotal(items);
   const totalQuantity = calculateTotalQuantity(items);
@@ -36,10 +36,8 @@ async function getExistingCartFromDB(cartId: string): Promise<Cart> {
   };
 }
 
-async function createNewCartInDB(): Promise<Cart> {
+export async function createNewCartInDB(): Promise<Cart> {
   const cart = await createCart();
-
-  storeCartIdLocally(cart.id);
 
   return {
     id: cart.id,
@@ -47,16 +45,6 @@ async function createNewCartInDB(): Promise<Cart> {
     subTotal: 0,
     totalQuantity: 0,
   };
-}
-
-export async function getCart(): Promise<Cart> {
-  const localCartId: string = getLocalCartId();
-
-  if (localCartId) {
-    return await getExistingCartFromDB(localCartId);
-  } else {
-    return await createNewCartInDB();
-  }
 }
 
 export async function addProductToCartInDB(product: IProduct, cartId: string) {

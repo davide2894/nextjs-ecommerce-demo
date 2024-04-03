@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ShoppingBag from "../shoppingBag/ShoppingBag";
-import { getCart } from "@/db/queries/cart";
+import { getCart } from "@/app/cart/actions/cartActions";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
 async function Header() {
@@ -28,7 +28,7 @@ async function Header() {
           <Typography variant="h6" component="div">
             Next E-commerce
           </Typography>
-          <ShoppingBag numberOfItems={cart.totalQuantity} />
+          <ShoppingBag numberOfItems={cart?.totalQuantity || 0} />
         </Toolbar>
       </AppBar>
     </>
