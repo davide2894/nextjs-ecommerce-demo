@@ -1,4 +1,4 @@
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/productCard/ProductCard";
 import React, { Suspense } from "react";
 import { getProducts } from "../product-detail/actions/productDetailAction";
 import Looading from "../loading";

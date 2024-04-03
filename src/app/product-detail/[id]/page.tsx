@@ -1,12 +1,12 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/addToCartButton/AddToCartButton";
 import { notFound } from "next/navigation";
 import { getProduct } from "../actions/productDetailAction";
 import { Box, Typography } from "@mui/material";
 import ProductImages from "@/components/productImages/ProductImages";
 import BackToButton from "@/components/backToButton/BackToButton";
-import Price from "@/components/Price";
+import Price from "@/components/price/Price";
 
 interface ProductDetailPageProps {
   params: {
