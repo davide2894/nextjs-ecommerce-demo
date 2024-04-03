@@ -1,9 +1,10 @@
 "use client";
 
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
+import log from "@/lib/log";
 import { IProduct } from "@/lib/types";
 import { Button } from "@mui/material";
-import React, { useState, useTransition } from "react";
+import React, { useTransition } from "react";
 
 interface AddToCartButtonProps {
   product: IProduct;
@@ -18,7 +19,7 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     });
   }
 
-  console.log({ isPending });
+  log({ isPending });
 
   const color = isPending ? "lightgray" : "white";
 
@@ -26,7 +27,6 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     <Button
       variant="contained"
       sx={{ ...buttonStyle, color }}
-      // sx={{ background: "black" }}
       disabled={isPending}
       onClick={handleClick}
       aria-label={`Add ${product.title} to shopping bag`}>

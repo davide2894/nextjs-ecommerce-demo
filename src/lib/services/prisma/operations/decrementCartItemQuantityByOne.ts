@@ -1,11 +1,12 @@
 import { revalidatePath } from "next/cache";
 import prisma from "../setup";
+import log from "@/lib/log";
 
 export default async function decrementCartItemQuantityByOne(
   cartItemId: string,
   cartId: string
 ) {
-  console.log({
+  log({
     cartItemId,
     cartId,
   });
