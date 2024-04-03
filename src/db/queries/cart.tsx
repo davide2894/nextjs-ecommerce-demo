@@ -8,35 +8,23 @@ import getSingleCartItem from "@/lib/services/prisma/operations/getSingleCartIte
 import decrementCartItemQuantityByOne from "@/lib/services/prisma/operations/decrementCartItemQuantityByOne";
 import { removeCartItem } from "@/lib/services/prisma/operations/removeCartItem";
 
-export function calculateSubTotal(cartItems: ICartItem[]) {
-  return cartItems.reduce(
-    (accumulatedSubTotal, currentCartItem) =>
-      accumulatedSubTotal + currentCartItem.price * currentCartItem.quantity,
-    0
-  );
+export async function getCart(): Promise<Cart | undefined> {
+  const localCartId: string = getLocalCartId();
+
+  if (localCartId) {
+    const items = await getCartItems(localCartId);
+    const subTotal = calculateSubTotal(items);
+    const totalQuantity = calculateTotalQuantity(items);
+    return {
+      id: localCartId,
+      items,
+      subTotal,
+      totalQuantity,
+    };
+  }
 }
 
-export function calculateTotalQuantity(cartItems: ICartItem[]) {
-  return cartItems.reduce(
-    (accumulatedTotalQuantity, currentCartItem) =>
-      accumulatedTotalQuantity + currentCartItem.quantity,
-    0
-  );
-}
-
-export async function getExistingCartFromDB(cartId: string): Promise<Cart> {
-  const items = await getCartItems(cartId);
-  const subTotal = calculateSubTotal(items);
-  const totalQuantity = calculateTotalQuantity(items);
-  return {
-    id: cartId,
-    items,
-    subTotal,
-    totalQuantity,
-  };
-}
-
-export async function createNewCartInDB(): Promise<Cart> {
+export async function createNewCartDbQuery(): Promise<Cart> {
   const cart = await createCart();
 
   return {
@@ -47,7 +35,10 @@ export async function createNewCartInDB(): Promise<Cart> {
   };
 }
 
-export async function addProductToCartInDB(product: IProduct, cartId: string) {
+export async function addProductToCartDbQuery(
+  product: IProduct,
+  cartId: string
+) {
   const productInCart = await getSingleCartItem(product.id, cartId);
 
   if (productInCart) {
@@ -73,4 +64,20 @@ export async function incrementCartItemQuantityByOneDbQuery(
 
 export async function removeCartItemDbQuery(cartItemId: string) {
   await removeCartItem(cartItemId);
+}
+
+function calculateSubTotal(cartItems: ICartItem[]) {
+  return cartItems.reduce(
+    (accumulatedSubTotal, currentCartItem) =>
+      accumulatedSubTotal + currentCartItem.price * currentCartItem.quantity,
+    0
+  );
+}
+
+function calculateTotalQuantity(cartItems: ICartItem[]) {
+  return cartItems.reduce(
+    (accumulatedTotalQuantity, currentCartItem) =>
+      accumulatedTotalQuantity + currentCartItem.quantity,
+    0
+  );
 }

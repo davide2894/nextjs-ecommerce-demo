@@ -4,7 +4,7 @@ import CartItem from "../../components/cartItem/CartItem";
 import { Box, Button, Container, Typography } from "@mui/material";
 import BackToButton from "@/components/backToButton/BackToButton";
 import Stack from "@mui/material/Stack";
-import { getCart } from "./actions/cartActions";
+import { getCart } from "@/db/queries/cart";
 
 async function CartPage() {
   const cart = await getCart();

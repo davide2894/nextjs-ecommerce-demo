@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import ShoppingBag from "../shoppingBag/ShoppingBag";
-import { getCart } from "@/app/cart/actions/cartActions";
 import { AppBar, Toolbar, Typography } from "@mui/material";
+import { getCart } from "@/db/queries/cart";
 
 async function Header() {
   const cart = await getCart();
