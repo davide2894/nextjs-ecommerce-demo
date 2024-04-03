@@ -12,6 +12,7 @@ import {
   removeCartItemAction,
 } from "../../app/cart/actions/cartActions";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Link from "next/link";
 
 interface CartItemtProps {
   item: ICartItem;
@@ -55,13 +56,15 @@ function CartItem({ item }: CartItemtProps) {
       borderTop="1px solid lightgray"
       paddingTop="10px">
       <Box>
-        <Image
-          style={cartItemImage}
-          src={item.thumbnail}
-          width={200}
-          height={200}
-          alt={item.title}
-        />
+        <Link href={"/product-detail/" + item.productId}>
+          <Image
+            style={cartItemImage}
+            src={item.thumbnail}
+            width={200}
+            height={200}
+            alt={item.title}
+          />
+        </Link>
       </Box>
       <Stack justifyContent="space-between" width="100%">
         <Stack direction="row" justifyContent="space-between" marginTop="20px">
