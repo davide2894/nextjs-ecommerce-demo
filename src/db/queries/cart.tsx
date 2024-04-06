@@ -24,6 +24,14 @@ export async function getCart(): Promise<Cart | undefined> {
   }
 }
 
+export async function getCartSize() {
+  const localCartId: string = getLocalCartId();
+  if (localCartId) {
+    const items = await getCartItems(localCartId);
+    return calculateTotalQuantity(items);
+  }
+}
+
 export async function createNewCartDbQuery(): Promise<Cart> {
   const cart = await createCart();
 

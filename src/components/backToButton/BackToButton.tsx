@@ -2,22 +2,17 @@ import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import React from "react";
 
-interface IBackToButton {
+interface BackToButtonProps {
   target: string;
   text: string;
 }
 
-function BackToButton({ target, text }: IBackToButton) {
+function BackToButton({ target, text }: BackToButtonProps) {
   return (
-    <Link href={target} style={backToLink}>
+    <Link href={target}>
       <Typography variant="caption">{text}</Typography>
     </Link>
   );
 }
-
-const backToLink = {
-  display: "block",
-  color: "#000",
-};
 
 export default BackToButton;
