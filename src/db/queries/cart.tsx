@@ -1,5 +1,5 @@
-import { Cart, ICartItem, IProduct } from "@/lib/types";
-import { getLocalCartId, storeCartIdLocally } from "../../lib/localCart";
+import { Cart, CartItemData, Product } from "@/lib/types";
+import { getLocalCartId } from "../../lib/localCart";
 import getCartItems from "@/lib/services/prisma/operations/getCartItems";
 import createCart from "@/lib/services/prisma/operations/createCart";
 import incrementCartItemQuantityByOne from "@/lib/services/prisma/operations/incrementCartItemQuantityByOne";
@@ -44,7 +44,7 @@ export async function createNewCartDbQuery(): Promise<Cart> {
 }
 
 export async function addProductToCartDbQuery(
-  product: IProduct,
+  product: Product,
   cartId: string
 ) {
   const productInCart = await getSingleCartItem(product.id, cartId);
@@ -74,7 +74,7 @@ export async function removeCartItemDbQuery(cartItemId: string) {
   await removeCartItem(cartItemId);
 }
 
-function calculateSubTotal(cartItems: ICartItem[]) {
+function calculateSubTotal(cartItems: CartItemData[]) {
   return cartItems.reduce(
     (accumulatedSubTotal, currentCartItem) =>
       accumulatedSubTotal + currentCartItem.price * currentCartItem.quantity,
@@ -82,7 +82,7 @@ function calculateSubTotal(cartItems: ICartItem[]) {
   );
 }
 
-function calculateTotalQuantity(cartItems: ICartItem[]) {
+function calculateTotalQuantity(cartItems: CartItemData[]) {
   return cartItems.reduce(
     (accumulatedTotalQuantity, currentCartItem) =>
       accumulatedTotalQuantity + currentCartItem.quantity,

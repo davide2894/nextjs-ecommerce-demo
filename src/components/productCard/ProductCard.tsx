@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import AddToCartButton from "@/components/addToCartButton/AddToCartButton";
-import { IProduct } from "@/lib/types";
+import { Product } from "@/lib/types";
 import {
   Box,
   Card,
@@ -13,7 +13,7 @@ import {
 import Price from "@/components/price/Price";
 
 interface ProductCardProps {
-  product: IProduct;
+  product: Product;
 }
 
 function ProductCard({ product }: ProductCardProps) {
