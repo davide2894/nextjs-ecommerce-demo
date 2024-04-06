@@ -19,14 +19,9 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     });
   }
 
-  log({ isPending });
-
-  const color = isPending ? "lightgray" : "white";
-
   return (
     <Button
       variant="contained"
-      sx={{ ...buttonStyle, color }}
       disabled={isPending}
       onClick={handleClick}
       aria-label={`Add ${product.title} to shopping bag`}>
@@ -34,10 +29,5 @@ function AddToCartButton({ product }: AddToCartButtonProps) {
     </Button>
   );
 }
-
-const buttonStyle = {
-  background: "black",
-  marginTop: "20px",
-};
 
 export default AddToCartButton;

@@ -17,7 +17,7 @@ async function Header() {
             display: "flex",
             justifyContent: "space-around",
           }}>
-          <Link href="/" className="linkToHome">
+          <Link href="/">
             <Image
               src={`/images/vercel.svg`}
               height={80}
@@ -25,9 +25,7 @@ async function Header() {
               alt="Next.js e-commerce logo"
             />
           </Link>
-          <Typography variant="h6" component="div">
-            Next E-commerce
-          </Typography>
+          <Typography variant="h6">Next E-commerce</Typography>
           <ShoppingBag numberOfItems={cart?.totalQuantity || 0} />
         </Toolbar>
       </AppBar>

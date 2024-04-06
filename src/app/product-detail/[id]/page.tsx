@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import AddToCartButton from "@/components/addToCartButton/AddToCartButton";
 import { notFound } from "next/navigation";
 import { getProduct } from "../actions/productDetailAction";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import ProductImages from "@/components/productImages/ProductImages";
 import BackToButton from "@/components/backToButton/BackToButton";
 import Price from "@/components/price/Price";
@@ -22,35 +22,26 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
   }
 
   return (
-    <Container maxWidth="sm" sx={containerStyle}>
-      <Box sx={{ height: "100vh" }}>
-        <BackToButton target="/product-list" text="Back to products" />
+    <Container maxWidth="sm">
+      <Stack>
         <Box>
-          <ProductImages images={product.images} />
-        </Box>
-        <Box sx={productInfoStyle}>
-          <Box component="div">
-            <Typography variant="body1">{product.title}</Typography>
-            <Price price={product.price} />
+          <BackToButton target="/product-list" text="Back to products" />
+          <Box>
+            <ProductImages images={product.images} />
           </Box>
-          <Box component="div">
-            <AddToCartButton product={product} />
-          </Box>
+          <Stack marginTop="10px">
+            <Box>
+              <Typography variant="body1">{product.title}</Typography>
+              <Price price={product.price} />
+            </Box>
+            <Box>
+              <AddToCartButton product={product} />
+            </Box>
+          </Stack>
         </Box>
-      </Box>
+      </Stack>
     </Container>
   );
 }
-
-const containerStyle = {
-  display: "flex",
-  justifyContent: "column",
-};
-
-const productInfoStyle = {
-  display: "flex",
-  flexDirection: "column",
-  marginTop: "10px",
-};
 
 export default ProductDetailPage;
