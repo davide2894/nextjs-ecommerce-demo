@@ -1,12 +1,9 @@
-import { IProduct } from "@/lib/types";
+import { Product } from "@/lib/types";
 import prisma from "../setup";
 import { revalidatePath } from "next/cache";
 
-export default async function createCartItem(
-  cartId: string,
-  product: IProduct
-) {
-  return await prisma.cart.update({
+export default async function createCartItem(cartId: string, product: Product) {
+  await prisma.cart.update({
     where: {
       id: cartId,
     },
