@@ -9,7 +9,6 @@ function MaterialThemeProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(children);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 
