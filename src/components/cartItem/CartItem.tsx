@@ -2,7 +2,7 @@
 
 import React, { useTransition } from "react";
 import Image from "next/image";
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, CardMedia, IconButton, Stack, Typography } from "@mui/material";
 import { ICartItem } from "@/lib/types";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -59,7 +59,6 @@ function CartItem({ item }: CartItemtProps) {
       <Box>
         <Link href={"/product-detail/" + item.productId}>
           <Image
-            style={cartItemImage}
             src={item.thumbnail}
             width={200}
             height={200}
@@ -67,7 +66,7 @@ function CartItem({ item }: CartItemtProps) {
           />
         </Link>
       </Box>
-      <Stack justifyContent="space-between" width="100%">
+      <Stack justifyContent="space-between" width="100%" marginLeft="20px">
         <Stack direction="row" justifyContent="space-between" marginTop="20px">
           <Typography>{item.title}</Typography>
           <Typography fontWeight="bold" marginRight="10px">
@@ -103,10 +102,5 @@ function CartItem({ item }: CartItemtProps) {
     </Stack>
   );
 }
-
-const cartItemImage = {
-  borderRadius: "5px",
-  marginRight: "20px",
-};
 
 export default CartItem;

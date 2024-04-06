@@ -1,15 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}>
+      <Stack>
         <Typography variant="h3" textAlign="center">
           Welcome to the Next Ecommerce
         </Typography>
@@ -20,7 +15,7 @@ export default function Home() {
           href="/product-list">
           Start shopping
         </Button>
-      </Box>
+      </Stack>
     </main>
   );
 }
