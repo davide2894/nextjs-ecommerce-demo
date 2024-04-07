@@ -1,18 +1,18 @@
-interface IBaseProduct {
+interface BaseProduct {
   id: string;
   title: string;
   price: number;
   thumbnail: string;
   discountPercentage: number;
 }
-export interface ICartItem extends IBaseProduct {
+export interface CartItemData extends BaseProduct {
   cartId: string | null;
   productId: string;
   discountPercentage: number;
   quantity: number;
 }
 
-export interface IProduct extends IBaseProduct {
+export interface Product extends BaseProduct {
   description: string;
   rating: number;
   stock: number;
@@ -23,7 +23,7 @@ export interface IProduct extends IBaseProduct {
 
 export type Cart = {
   id: string;
-  items: ICartItem[];
+  items: CartItemData[];
   subTotal: number;
   totalQuantity: number;
 };
