@@ -2,7 +2,6 @@ import { IconButton, TextField } from "@mui/material";
 import { redirect } from "next/navigation";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { revalidatePath } from "next/cache";
 
 function SearchBar() {
   async function onSubmit(formData: FormData) {
