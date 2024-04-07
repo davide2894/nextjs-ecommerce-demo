@@ -4,12 +4,25 @@ import { getProducts } from "../product-detail/actions/productDetailAction";
 import Looading from "../loading";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
+import ErrorMessage from "@/components/errorMessage/ErrorMessage";
+import log from "@/lib/log";
 
-async function ProductListPage() {
-  const products = await getProducts();
+interface ProductListPageProps {
+  searchParams?: { query: string };
+}
 
-  if (!products) {
-    return <div>No products found</div>;
+async function ProductListPage({ searchParams }: ProductListPageProps) {
+  console.log({ searchParamsQuery: searchParams?.query });
+  const products = searchParams?.query
+    ? await getProducts(searchParams.query)
+    : await getProducts();
+
+  log({ productsLength: products.length, products });
+
+  if (!products.length) {
+    return (
+      <ErrorMessage message="No products were found :/ Try a different parameter" />
+    );
   }
 
   return (
