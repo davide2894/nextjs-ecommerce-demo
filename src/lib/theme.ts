@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { colors, createTheme } from "@mui/material";
 
 const COLORS = {
   BLACK: "black",
@@ -8,6 +8,11 @@ const COLORS = {
 
 const theme = createTheme({
   components: {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: "sm",
+      },
+    },
     MuiButton: {
       styleOverrides: {
         contained: {

@@ -16,7 +16,7 @@ async function CartPage() {
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container>
       <Box>
         {cart.items &&
           cart.items.map((cartItem) => (

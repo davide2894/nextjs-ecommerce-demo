@@ -22,7 +22,7 @@ async function ProductDetailPage({ params }: ProductDetailPageProps) {
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container>
       <Stack>
         <Box>
           <BackToButton target="/product-list" text="Back to products" />
