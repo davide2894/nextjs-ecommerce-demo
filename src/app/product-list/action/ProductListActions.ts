@@ -1,8 +1,8 @@
 "use server";
 
 import { getProductsFromDB } from "@/db/queries/product";
-import { IProduct } from "@/lib/types";
+import { Product } from "@/lib/types";
 
-export async function getProductsAction(query?: string): Promise<IProduct[]> {
+export async function getProductsAction(query?: string): Promise<Product[]> {
   return query ? await getProductsFromDB(query) : await getProductsFromDB();
 }
