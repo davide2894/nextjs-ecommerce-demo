@@ -2,12 +2,12 @@
 
 import { addProductToCartAction } from "@/app/cart/actions/cartActions";
 import log from "@/lib/log";
-import { IProduct } from "@/lib/types";
+import { Product } from "@/lib/types";
 import { Button } from "@mui/material";
 import React, { useTransition } from "react";
 
 interface AddToCartButtonProps {
-  product: IProduct;
+  product: Product;
 }
 
 function AddToCartButton({ product }: AddToCartButtonProps) {

@@ -2,8 +2,8 @@
 
 import React, { useTransition } from "react";
 import Image from "next/image";
-import { Box, CardMedia, IconButton, Stack, Typography } from "@mui/material";
-import { ICartItem } from "@/lib/types";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { CartItemData } from "@/lib/types";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -16,7 +16,7 @@ import Link from "next/link";
 import log from "@/lib/log";
 
 interface CartItemtProps {
-  item: ICartItem;
+  item: CartItemData;
 }
 
 function CartItem({ item }: CartItemtProps) {

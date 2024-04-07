@@ -4,11 +4,11 @@ import log from "@/lib/log";
 import { useMediaQuery, ImageList, ImageListItem } from "@mui/material";
 import React from "react";
 
-interface IProductImagesProps {
+interface ProductImagesProps {
   images: string[];
 }
 
-function ProductImages({ images }: IProductImagesProps) {
+function ProductImages({ images }: ProductImagesProps) {
   const matchesTabletMediaQuery = useMediaQuery("(min-width:768px)");
   const matchesDesktopMediaQuery = useMediaQuery("(min-width:1024px)");
   let cols;

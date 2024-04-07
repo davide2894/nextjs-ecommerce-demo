@@ -1,6 +1,6 @@
 "use server";
 
-import { Cart, IProduct } from "@/lib/types";
+import { Cart, Product } from "@/lib/types";
 import {
   addProductToCartDbQuery,
   createNewCartDbQuery,
@@ -12,7 +12,7 @@ import {
 import { storeCartIdLocally } from "@/lib/localCart";
 import { cookies } from "next/headers";
 
-export async function addProductToCartAction(product: IProduct) {
+export async function addProductToCartAction(product: Product) {
   let cart = (await getCart()) || (await createCartAction());
   await addProductToCartDbQuery(product, cart.id);
 }
