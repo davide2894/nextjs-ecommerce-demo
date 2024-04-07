@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import Price from "@/components/price/Price";
+import ImageContainer from "../imageContainer/ImageContainer";
 
 interface ProductCardProps {
   product: Product;
@@ -20,11 +21,14 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <Card>
       <Link href={"/product-detail/" + product.id}>
-        <CardMedia
-          component="img"
-          src={product.images[0]}
-          title={product.title}
-        />
+        <CardMedia>
+          <ImageContainer
+            width={250}
+            height={250}
+            src={product.images[0]}
+            alt={product.title}
+          />
+        </CardMedia>
       </Link>
       <CardContent>
         <Stack>

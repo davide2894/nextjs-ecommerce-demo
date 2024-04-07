@@ -14,6 +14,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
 import log from "@/lib/log";
+import ImageContainer from "../imageContainer/ImageContainer";
 
 interface CartItemtProps {
   item: CartItemData;
@@ -58,7 +59,7 @@ function CartItem({ item }: CartItemtProps) {
       paddingTop="10px">
       <Box>
         <Link href={"/product-detail/" + item.productId}>
-          <Image
+          <ImageContainer
             src={item.thumbnail}
             width={200}
             height={200}

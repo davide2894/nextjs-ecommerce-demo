@@ -3,6 +3,7 @@
 import log from "@/lib/log";
 import { useMediaQuery, ImageList, ImageListItem } from "@mui/material";
 import React from "react";
+import ImageContainer from "../imageContainer/ImageContainer";
 
 interface ProductImagesProps {
   images: string[];

@@ -6,6 +6,8 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { Box } from "@mui/material";
 import MaterialThemeProvider from "@/components/materialThemeProvider/materialThemeProvider";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,8 +26,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <MaterialThemeProvider>
-          <Container maxWidth="lg">
-            <Box minHeight="100vh">{children}</Box>
+          <Container>
+            <Box minHeight="100vh">
+              <Suspense fallback={<Loading />}>{children}</Suspense>
+            </Box>
           </Container>
         </MaterialThemeProvider>
         <Footer />
