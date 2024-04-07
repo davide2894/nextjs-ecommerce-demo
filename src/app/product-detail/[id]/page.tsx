@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import Loading from "./loading";
 import Product from "@/components/product/Product";
+import Loading from "@/app/loading";
 
 interface ProductDetailPageProps {
   params: {
