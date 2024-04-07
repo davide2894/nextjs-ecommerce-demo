@@ -2,11 +2,11 @@ import React from "react";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Box, IconButton, Typography } from "@mui/material";
 
-interface IShoppingBagProps {
+interface ShoppingBagProps {
   numberOfItems: number;
 }
 
-function ShoppingBag({ numberOfItems }: IShoppingBagProps) {
+function ShoppingBag({ numberOfItems }: ShoppingBagProps) {
   return (
     <Box>
       <IconButton href="/cart">

@@ -1,10 +1,10 @@
 import { getProductsFromDB, getProductFromDB } from "@/db/queries/product";
-import { IProduct } from "@/lib/types";
+import { Product } from "@/lib/types";
 
-export async function getProducts(): Promise<IProduct[]> {
+export async function getProducts(): Promise<Product[]> {
   return await getProductsFromDB();
 }
 
-export async function getProduct(id: string): Promise<IProduct> {
+export async function getProduct(id: string): Promise<Product> {
   return await getProductFromDB(id);
 }
