@@ -1,7 +1,6 @@
-import { getProduct } from "@/app/product-detail/actions/productDetailAction";
+import { getProductAction } from "@/app/product-detail/actions/productDetailAction";
 import { Container, Stack, Box, Typography } from "@mui/material";
 import { notFound } from "next/navigation";
-import React from "react";
 import AddToCartButton from "../addToCartButton/AddToCartButton";
 import BackToButton from "../backToButton/BackToButton";
 import Price from "../price/Price";
@@ -12,7 +11,7 @@ interface ProductProps {
 }
 
 async function Product({ id }: ProductProps) {
-  const product = await getProduct(id);
+  const product = await getProductAction(id);
 
   if (!product) {
     return notFound();

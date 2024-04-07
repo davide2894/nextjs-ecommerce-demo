@@ -1,7 +1,6 @@
 import { getProductsAction } from "@/app/product-list/action/ProductListActions";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { log } from "console";
-import React from "react";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import ProductCard from "../productCard/ProductCard";
 
