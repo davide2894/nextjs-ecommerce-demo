@@ -3,6 +3,7 @@ import Link from "next/link";
 import ShoppingBag from "../shoppingBag/ShoppingBag";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { getCart } from "@/db/queries/cart";
+import SearchBar from "../searchBar/SearchBar";
 
 async function Header() {
   const cart = await getCart();
@@ -23,9 +24,10 @@ async function Header() {
               height={80}
               width={80}
               alt="Next.js e-commerce logo"
+              priority
             />
           </Link>
-          <Typography variant="h6">Next E-commerce</Typography>
+          <SearchBar />
           <ShoppingBag numberOfItems={cart?.totalQuantity || 0} />
         </Toolbar>
       </AppBar>

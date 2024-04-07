@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <MaterialThemeProvider>
-          <Container>
+          <Container maxWidth="lg">
             <Box minHeight="100vh">{children}</Box>
           </Container>
         </MaterialThemeProvider>
