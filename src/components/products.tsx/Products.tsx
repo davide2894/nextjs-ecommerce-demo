@@ -1,11 +1,9 @@
-import { getProducts } from "@/app/product-detail/actions/productDetailAction";
 import { Box, Grid } from "@mui/material";
-import React from "react";
 import ProductCard from "../productCard/ProductCard";
-import { unstable_noStore } from "next/cache";
+import { getProductsAction } from "@/app/product-list/action/ProductListActions";
 
 async function Products() {
-  const products = await getProducts();
+  const products = await getProductsAction();
 
   if (!products) {
     return <div>No products found</div>;
