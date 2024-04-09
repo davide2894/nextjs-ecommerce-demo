@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import Product from "@/components/product/Product";
 import Loading from "@/app/loading";
 

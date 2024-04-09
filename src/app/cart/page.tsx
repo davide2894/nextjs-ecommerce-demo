@@ -1,6 +1,6 @@
 import CartContent from "@/components/cartContent/CartContent";
 import { Suspense } from "react";
-import Loading from "../loading";
+import Loading from "@/app/loading";
 
 async function CartPage() {
   return (
@@ -9,3 +9,5 @@ async function CartPage() {
     </Suspense>
   );
 }
+
+export default CartPage;

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import Products from "@/components/products.tsx/Products";
 import ProductsSkeleton from "@/components/products.tsx/ProductsSkeleton";
 

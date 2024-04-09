@@ -1,7 +1,5 @@
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import styles from "./page.module.css";
-import { redirect } from "next/navigation";
-import SearchBar from "@/components/searchBar/SearchBar";
 
 export default function Home() {
   return (
