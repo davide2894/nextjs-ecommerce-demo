@@ -1,17 +1,14 @@
-import { CircularProgress, Container } from "@mui/material";
-import React from "react";
+import { CircularProgress, Container, Stack } from "@mui/material";
 
 function Looading() {
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-      }}>
-      <CircularProgress sx={{ marginTop: 400 }} />
-    </Container>
+    <>
+      <Container>
+        <Stack alignItems="center" marginTop="200px">
+          <CircularProgress />
+        </Stack>
+      </Container>
+    </>
   );
 }
 
