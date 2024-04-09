@@ -1,12 +1,24 @@
 import { Box, Grid } from "@mui/material";
 import ProductCard from "../productCard/ProductCard";
 import { getProductsAction } from "@/app/product-list/action/ProductListActions";
+import { log } from "console";
+import ErrorMessage from "../errorMessage/ErrorMessage";
+interface ProductsPros {
+  query?: string;
+}
 
-async function Products() {
-  const products = await getProductsAction();
+async function Products({ query }: ProductsPros) {
+  console.log({ query });
+  const products = query
+    ? await getProductsAction(query)
+    : await getProductsAction();
 
-  if (!products) {
-    return <div>No products found</div>;
+  log({ productsLength: products.length, products });
+
+  if (!products.length) {
+    return (
+      <ErrorMessage message="No products were found :/ Try a different parameter" />
+    );
   }
 
   return (
