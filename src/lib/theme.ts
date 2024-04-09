@@ -10,7 +10,7 @@ const theme = createTheme({
   components: {
     MuiContainer: {
       defaultProps: {
-        maxWidth: "sm",
+        maxWidth: "lg",
       },
     },
     MuiButton: {
