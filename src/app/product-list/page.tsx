@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import Loading from "../loading";
 import Products from "@/components/products/Products";
+import ProductsSkeleton from "@/components/products/ProductsSkeleton";
 
 interface ProductListPageProps {
   searchParams?: { query: string };
@@ -8,7 +8,7 @@ interface ProductListPageProps {
 
 async function ProductListPage({ searchParams }: ProductListPageProps) {
   return (
-    <Suspense key={searchParams?.query || ""} fallback={<Loading />}>
+    <Suspense key={searchParams?.query || ""} fallback={<ProductsSkeleton />}>
       <Products query={searchParams?.query || ""} />
     </Suspense>
   );
