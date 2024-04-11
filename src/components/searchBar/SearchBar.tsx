@@ -1,13 +1,15 @@
 import { IconButton, TextField } from "@mui/material";
 import { redirect } from "next/navigation";
-import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { log } from "console";
 
 function SearchBar() {
   async function onSubmit(formData: FormData) {
     "use server";
     const query = formData.get("searchProductsQuery");
-    console.log({ query });
+
+    log({ query });
+
     if (query) {
       redirect(`/product-list?query=${query}`);
     } else {
