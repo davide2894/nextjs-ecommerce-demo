@@ -1,5 +1,5 @@
 import { getCart } from "@/db/queries/cart";
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, Container } from "@mui/material";
 import { log } from "console";
 import { redirect } from "next/navigation";
 import BackToButton from "../backToButton/BackToButton";
@@ -13,7 +13,7 @@ async function CartContent() {
     redirect("/");
   }
   return (
-    <>
+    <Container>
       {cart.items &&
         cart.items.map((cartItem) => (
           <CartItem item={cartItem} key={cartItem.id} />
@@ -33,7 +33,7 @@ async function CartContent() {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </Container>
   );
 }
 
