@@ -1,11 +1,11 @@
 import CartContent from "@/components/cartContent/CartContent";
 import { Suspense } from "react";
-import Loading from "../loading";
 import { Container } from "@mui/material";
+import CartContentSkeleton from "@/components/cartContent/CartContentSkeleton";
 
 function CartPage() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<CartContentSkeleton />}>
       <Container>
         <CartContent />
       </Container>
