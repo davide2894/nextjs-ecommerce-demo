@@ -81,6 +81,12 @@ const theme = createTheme({
         },
       },
     },
+    MuiSkeleton: {
+      defaultProps: {
+        animation: "wave",
+        height: 20,
+      },
+    },
   },
 });
 

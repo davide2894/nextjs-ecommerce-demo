@@ -8,6 +8,7 @@ import { Box } from "@mui/material";
 import MaterialThemeProvider from "@/components/materialThemeProvider/materialThemeProvider";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +26,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <MaterialThemeProvider>
-          <Container maxWidth="lg">
-            <Box minHeight="100vh">
-              <Suspense fallback={<Loading />}>{children}</Suspense>
-            </Box>
-          </Container>
-        </MaterialThemeProvider>
+        <AppRouterCacheProvider>
+          <MaterialThemeProvider>
+            <Container maxWidth="lg">
+              <Box minHeight="100vh">
+                <Suspense fallback={<Loading />}>{children}</Suspense>
+              </Box>
+            </Container>
+          </MaterialThemeProvider>
+        </AppRouterCacheProvider>
         <Footer />
       </body>
     </html>
