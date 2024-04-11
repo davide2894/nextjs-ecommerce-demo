@@ -6,7 +6,7 @@ interface ProductListPageProps {
   searchParams?: { query: string };
 }
 
-async function ProductListPage({ searchParams }: ProductListPageProps) {
+function ProductListPage({ searchParams }: ProductListPageProps) {
   return (
     <Suspense key={searchParams?.query || ""} fallback={<ProductsSkeleton />}>
       <Products query={searchParams?.query || ""} />
