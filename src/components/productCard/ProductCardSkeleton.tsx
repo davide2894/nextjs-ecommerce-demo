@@ -5,13 +5,13 @@ function ProductCardSkeleton() {
   log("ProductCardSkeleton");
   return (
     <Card>
-      <Skeleton variant="rectangular" height={250} animation="wave" />
+      <Skeleton height={250} variant="rectangular" />
       <CardContent>
         <Stack>
-          <Skeleton animation="wave" height={20} />
-          <Skeleton animation="wave" height={20} />
+          <Skeleton height={20} />
+          <Skeleton height={20} />
         </Stack>
-        <Skeleton animation="wave" height={50} />
+        <Skeleton height={50} />
       </CardContent>
     </Card>
   );
