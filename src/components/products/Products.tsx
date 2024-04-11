@@ -1,16 +1,16 @@
 import { getProductsAction } from "@/app/product-list/action/ProductListActions";
-import { Box, Container, Grid } from "@mui/material";
-import { log } from "console";
-import React from "react";
+import { Box, Grid } from "@mui/material";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import ProductCard from "../productCard/ProductCard";
+import { log } from "console";
 
 interface ProductsPros {
   query?: string;
 }
 
 async function Products({ query }: ProductsPros) {
-  console.log({ query });
+  log({ query });
+
   const products = query
     ? await getProductsAction(query)
     : await getProductsAction();
@@ -22,7 +22,7 @@ async function Products({ query }: ProductsPros) {
       <ErrorMessage message="No products were found :/ Try a different parameter" />
     );
   }
-  8;
+
   return (
     <Box sx={{ flexGrow: 1, p: 2 }}>
       <Grid container spacing={4}>

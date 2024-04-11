@@ -20,10 +20,13 @@ Brutally simple e-commerce demo with homepage, product list, product details and
   - `feature/product-list`
   - `feature/product-detail`
   - `feature/cart`
+  - `feature/image-loading-placeholder`
+  - `feature/material-ui-theme`
+  - `feature/typescript-interfaces-naming`
   - `develop`
   - `main`
 
-Ech branch served its purpose when developing the pages and features avaialable (product detail, product list, cart).
+Ech branch served its purpose when developing the pages and features avaialable (product detail, product list, cart, search).
 The `feature` branches were merged into `develop` and `main` once their respective development was done.
 I decided to keep them (hence not to delete them) for demonstration purposes.
 Use `develop` to start this project locally.
@@ -54,7 +57,7 @@ Run `npx prisma generate`
 
 Run `npm run dev` to startup local Next.js server (usually setup on port 3000)
 
-## Next features to add
+## Next features to add (marked feature is to be considered DONE)
 
-- Search
-- Show Material ui skeleton while images are loading
+- ~~Search products~~
+- ~~Show Material ui skeleton while images are loading~~

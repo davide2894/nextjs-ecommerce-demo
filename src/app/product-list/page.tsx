@@ -1,21 +1,14 @@
-import ProductCard from "@/components/productCard/ProductCard";
-import React, { Suspense } from "react";
-import Looading from "../loading";
-import Grid from "@mui/material/Unstable_Grid2";
-import { Box } from "@mui/material";
-import ErrorMessage from "@/components/errorMessage/ErrorMessage";
-import log from "@/lib/log";
-import { getProductsAction } from "./action/ProductListActions";
-import Loading from "../loading";
+import { Suspense } from "react";
 import Products from "@/components/products/Products";
+import ProductsSkeleton from "@/components/products/ProductsSkeleton";
 
 interface ProductListPageProps {
   searchParams?: { query: string };
 }
 
-async function ProductListPage({ searchParams }: ProductListPageProps) {
+function ProductListPage({ searchParams }: ProductListPageProps) {
   return (
-    <Suspense key={searchParams?.query || ""} fallback={<Loading />}>
+    <Suspense key={searchParams?.query || ""} fallback={<ProductsSkeleton />}>
       <Products query={searchParams?.query || ""} />
     </Suspense>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ShoppingBag from "../shoppingBag/ShoppingBag";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import { getCart } from "@/db/queries/cart";
 import SearchBar from "../searchBar/SearchBar";
 

@@ -1,4 +1,4 @@
-import { colors, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material";
 
 const COLORS = {
   BLACK: "black",
@@ -72,6 +72,19 @@ const theme = createTheme({
         root: {
           color: COLORS.BLACK,
         },
+      },
+    },
+    MuiCircularProgress: {
+      styleOverrides: {
+        root: {
+          color: COLORS.BLACK,
+        },
+      },
+    },
+    MuiSkeleton: {
+      defaultProps: {
+        animation: "wave",
+        height: 20,
       },
     },
   },

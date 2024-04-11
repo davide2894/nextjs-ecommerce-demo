@@ -2,7 +2,7 @@ import { Product } from "../../lib/types";
 import prisma from "../../lib/services/prisma/setup";
 import log from "@/lib/log";
 
-export async function getProductsFromDB(query?: string): Promise<Product[]> {
+export async function getProductsDbQuery(query?: string): Promise<Product[]> {
   if (query && query.length) {
     return await prisma.product.findMany({
       where: {
@@ -17,7 +17,7 @@ export async function getProductsFromDB(query?: string): Promise<Product[]> {
   }
 }
 
-export async function getProductFromDB(id: string): Promise<Product> {
+export async function getProductDbQuery(id: string): Promise<Product> {
   log({ scope: "getProductFromDB", id });
   return await prisma.product.findUniqueOrThrow({
     where: {
