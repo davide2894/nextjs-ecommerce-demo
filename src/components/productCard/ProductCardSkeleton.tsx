@@ -8,8 +8,8 @@ function ProductCardSkeleton() {
       <Skeleton height={250} variant="rectangular" />
       <CardContent>
         <Stack>
-          <Skeleton height={20} />
-          <Skeleton height={20} />
+          <Skeleton />
+          <Skeleton />
         </Stack>
         <Skeleton height={50} />
       </CardContent>
